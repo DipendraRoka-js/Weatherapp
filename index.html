@@ -3,19 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web application</title>
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="card">
-    <div class="search">
-      <input type="text" placeholder="Enter the city name"
-      spellcheck="false">
-      <button><img src ="images/search.png"></button>
+
+  <div class="weather-container">
+
+    <h1>Weather App</h1>
+
+    <div class="search-box">
+      <input
+        type="text"
+        class="js-city-input"
+        placeholder="Enter city name..."
+      >
+      <button class="js-search-btn">
+        Search
+      </button>
     </div>
 
-    
+    <div class="weather-card">
 
+      <h2 class="js-city-name">Kathmandu</h2>
+
+      <img
+        class="js-weather-icon"
+        src="images/clear.png"
+        alt="Weather Icon"
+      >
+
+      <h1 class="js-temperature">25°C</h1>
+
+      <p class="js-weather-condition">
+        Clear Sky
+      </p>
+
+      <div class="weather-details">
+
+        <div class="detail">
+          <h3>Humidity</h3>
+          <p class="js-humidity">60%</p>
+        </div>
+
+        <div class="detail">
+          <h3>Wind</h3>
+          <p class="js-wind-speed">12 km/h</p>
+        </div>
+
+        <div class="detail">
+          <h3>Feels Like</h3>
+          <p class="js-feels-like">27°C</p>
+        </div>
+
+        <div class="detail">
+          <h3>Pressure</h3>
+          <p class="js-pressure">1015 hPa</p>
+        </div>
+
+      </div>
+
+    </div>
 
   </div>
+
+  <script src="script.js"></script>
+
 </body>
 </html>
