@@ -42,3 +42,43 @@ async function getWeather(city) {
     alert(error.message);
   }
 }
+
+
+/*
+const apiKey = "YOUR_API_KEY";
+
+const searchBtn = document.getElementById("searchBtn");
+const cityInput = document.getElementById("cityInput");
+const weatherDiv = document.getElementById("weather");
+
+searchBtn.addEventListener("click", () => {
+    const city = cityInput.value;
+
+    if(city === ""){
+        alert("Enter a city");
+        return;
+    }
+
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+        .then(response => {
+            if(!response.ok){
+                throw new Error("City not found");
+            }
+            return response.json();
+        })
+        .then(data => {
+
+            weatherDiv.innerHTML = `
+                <h2>${data.name}, ${data.sys.country}</h2>
+                <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png">
+                <h3>${data.main.temp} °C</h3>
+                <p>${data.weather[0].description}</p>
+                <p>Humidity: ${data.main.humidity}%</p>
+                <p>Wind: ${data.wind.speed} m/s</p>
+            `;
+        })
+        .catch(error => {
+            weatherDiv.innerHTML = `<p>${error.message}</p>`;
+        });
+});
+*/
