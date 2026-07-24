@@ -1,13 +1,16 @@
-const apiKey = "YOUR_API_KEY";
+const apiKey = "72fdadc73ee2a446319328bdd9710115";
 
-const cityInput = document.querySelector(".city-input");
-const searchBtn = document.querySelector(".search-btn");
+const cityInput = document.querySelector(".js-city-input");
+const searchBtn = document.querySelector(".js-search-btn");
 
-const cityName = document.querySelector(".city-name");
-const temperature = document.querySelector(".temperature");
-const description = document.querySelector(".description");
-const humidity = document.querySelector(".humidity");
-const wind = document.querySelector(".wind");
+const cityName = document.querySelector(".js-city-name");
+const weatherIcon = document.querySelector(".js-weather-icon");
+const temperature = document.querySelector(".js-temperature");
+const weatherCondition = document.querySelector(".js-weather-condition");
+const humidity = document.querySelector(".js-humidity");
+const windSpeed = document.querySelector(".js-wind-speed");
+const feelsLike = document.querySelector(".js-feels-like");
+const pressure = document.querySelector(".js-pressure");
 
 searchBtn.addEventListener("click", () => {
   const city = cityInput.value.trim();
@@ -27,16 +30,35 @@ async function getWeather(city) {
     const response = await fetch(url);
 
     if (!response.ok) {
-      throw new Error("City not found");
+      throw new Error("City not found.");
     }
 
     const data = await response.json();
 
+    // Update city name
     cityName.textContent = data.name;
+
+    // Update temperature
     temperature.textContent = `${Math.round(data.main.temp)}°C`;
-    description.textContent = data.weather[0].description;
-    humidity.textContent = `Humidity: ${data.main.humidity}%`;
-    wind.textContent = `Wind: ${data.wind.speed} km/h`;
+
+    // Update weather condition
+    weatherCondition.textContent = data.weather[0].description;
+
+    // Update humidity
+    humidity.textContent = `${data.main.humidity}%`;
+
+    // Update wind speed
+    windSpeed.textContent = `${data.wind.speed} km/h`;
+
+    // Update feels like
+    feelsLike.textContent = `${Math.round(data.main.feels_like)}°C`;
+
+    // Update pressure
+    pressure.textContent = `${data.main.pressure} hPa`;
+
+    // Update weather icon
+    const iconCode = data.weather[0].icon;
+    weatherIcon.src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
   } catch (error) {
     alert(error.message);
